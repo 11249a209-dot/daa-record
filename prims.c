@@ -13,12 +13,10 @@ Prim’s Algorithm
 #include <stdio.h> 
 #include <stdlib.h> 
 #define V 5 // Number of vertices 
- 
-// Function to find the vertex with minimum key value (Minimum edge weight) 
 int minKey(int key[], int visited[]) 
 { 
-    int min = 999999; // Initialize min to a large value 
-    int min_index = 0; // Initialize min_index to 0 as it starts with vertex 0 
+    int min = 999999; 
+    int min_index = 0; 
  
     for (int i = 0; i < V; i++) 
     { 
@@ -31,7 +29,7 @@ int minKey(int key[], int visited[])
     return min_index; 
 } 
  
-// Function to print MST 
+
 void printPrimMST(int parent[], int graph[V][V]) 
 { 
     printf("\nPrim's MST:\n"); 
@@ -44,23 +42,19 @@ void printPrimMST(int parent[], int graph[V][V])
         total += graph[i][parent[i]]; 
     } 
     printf("Total Cost = %d\n", total); 
-} 
- 
-// Prim's Algorithm Implementation 
+}  
 void primMST(int graph[V][V]) 
 { 
-    int parent[V];  // Stores MST 
-    int key[V];     // Minimum edge weight 
-    int visited[V]; // Track visited vertices 
- 
-    // Step 1: Initialize 
+    int parent[V];  
+    int key[V];     
+    int visited[V];  
+
     for (int i = 0; i < V; i++) 
     { 
         key[i] = 999999; 
         visited[i] = 0; 
     } 
  
-    // Step 2: Start from vertex 0 
     key[0] = 0; 
     parent[0] = -1; 
  

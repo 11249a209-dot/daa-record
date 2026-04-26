@@ -21,32 +21,29 @@ ALGORITHM:
 7.display the totalprofit
 program:
 #include <stdio.h> 
-2.  
-3. struct Item 
-4. { 
-5.     int weight; 
-6.     int value; 
-7.     float ppw; 
-8. }; 
-9.  
-10. 
-11. void sort(struct Item items[], int n) 
-12. { 
-13.     struct Item temp; 
-14.     for (int i = 0; i < n - 1; i++) 
-15.     { 
-16.         for (int j = 0; j < n - i - 1; j++) 
-17.         { 
-18.             if (items[j].ppw < items[j + 1].ppw) 
-19.             { 
-20.                 temp = items[j]; 
-21.                 items[j] = items[j + 1]; 
-22.                 items[j + 1] = temp; 
-23.             } 
-24.         } 
-25.     } 
-26. } 
-27.  
+  struct Item 
+   { 
+    int weight; 
+    int value; 
+   float ppw; 
+ };  
+ void sort(struct Item items[], int n) 
+ { 
+    struct Item temp; 
+   for (int i = 0; i < n - 1; i++) 
+   { 
+       for (int j = 0; j < n - i - 1; j++) 
+      { 
+         if (items[j].ppw < items[j + 1].ppw) 
+            { 
+            temp = items[j]; 
+                items[j] = items[j + 1]; 
+                items[j + 1] = temp; 
+           } 
+      } 
+   } 
+ } 
+ 
 28. int main() 
 29. { 
 30.     int n; 
@@ -78,15 +75,15 @@ program:
 56.     { 
 57.         if (capacity >= items[i].weight) 
 58.         { 
-59.             totalProfit += items[i].value; 
-60.             capacity -= items[i].weight; 
-61.         } 
-62.         else 
-63.         { 
-64.             totalProfit += items[i].ppw * capacity; 
-65.             break; 
-66.         } 
-67.     } 
-68.     printf("Maximum profit = %.2f\n", totalProfit); 
-69.     return 0; 
-70. }
+          totalProfit += items[i].value; 
+   capacity -= items[i].weight; 
+     } 
+        else 
+    { 
+           totalProfit += items[i].ppw * capacity;    
+   break; 
+      } 
+   } 
+  printf("Maximum profit = %.2f\n", totalProfit); 
+    return 0; 
+ }

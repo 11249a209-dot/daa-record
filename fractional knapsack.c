@@ -43,38 +43,32 @@ program:
       } 
    } 
  } 
- 
-28. int main() 
-29. { 
-30.     int n; 
-31.     float capacity; 
-32.  
-33.     printf("Enter number of items: "); 
-34.     scanf("%d", &n); 
-35.  
-36.     if (n <= 0) 
-37.         return 1; 
-38.     struct Item items[n]; 
-39.  
-40.     printf("Enter weight and value of each item:\n"); 
-41.     for (int i = 0; i < n; i++) 
-42.     { 
-43.         printf("Item %d: ", i + 1); 
-44.         scanf("%d %d", &items[i].weight, &items[i].value); 
-45.         items[i].ppw = (float)items[i].value / items[i].weight; 
-46.     }  
-47.  
-48.     printf("Enter knapsack capacity: "); 
-49.     scanf("%f", &capacity); 
-50.  
-51.      
-52.     sort(items, n); 
-53.  
-54.     float totalProfit = 0.0; 
-55.     for (int i = 0; i < n; i++) 
-56.     { 
-57.         if (capacity >= items[i].weight) 
-58.         { 
+  int main() 
+{ 
+    int n; 
+   float capacity; 
+   printf("Enter number of items: "); 
+   scanf("%d", &n); 
+  if (n <= 0) 
+     return 1; 
+  struct Item items[n]; 
+ printf("Enter weight and value of each item:\n"); 
+ for (int i = 0; i < n; i++) 
+  { 
+   printf("Item %d: ", i + 1); 
+        scanf("%d %d", &items[i].weight, &items[i].value); 
+        items[i].ppw = (float)items[i].value / items[i].weight; 
+   }  
+
+   printf("Enter knapsack capacity: "); 
+    scanf("%f", &capacity);     
+   sort(items, n); 
+
+  float totalProfit = 0.0; 
+   for (int i = 0; i < n; i++) 
+  { 
+   if (capacity >= items[i].weight) 
+      { 
           totalProfit += items[i].value; 
    capacity -= items[i].weight; 
      } 

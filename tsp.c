@@ -20,87 +20,67 @@ ALGORITHM:
 8.display the returned value as the minimum travelling cost.
 program:
 #include <stdio.h> 
-2. #define MAXN 15 
-3.  
-4. 
-7. #define INF 999999 
-8.  
-9. int n; 
-10. int d[MAXN][MAXN]; 
-11. 
-13. int dp[MAXN][1 << MAXN]; 
-14.  
-15.  
-17. int g(int i, int S) 
-18. { 
-19.     
-20.     if (S == 0) 
-21.         return d[i][0]; 
-22.  
-23.     
-24.     if (dp[i][S] != -1)  
-25.         return dp[i][S]; 
-26.  
-27.     int minCost = INF; 
- 
-
-24 
-28.  
-29.    
+#define MAXN 15 
+ #define INF 999999   
+int n; 
+ int d[MAXN][MAXN]; 
+int dp[MAXN][1 << MAXN];   
+int g(int i, int S) 
+ { 
+     
+   if (S == 0) 
+      return d[i][0]; 
+    if (dp[i][S] != -1)  
+              return dp[i][S]; 
+           int minCost = INF; 
 included in S. 
-30.     
-31.     for (int k = 0; k < n; k++) 
-32.     { 
-33.         
-36.         if (S & (1 << k)) 
-37.         { 
-38.             
-39.             int cost = d[i][k] + g(k, S & ~(1 << k)); 
-40.  
-41.            
-42.             if (cost < minCost) 
-43.             { 
-44.                 minCost = cost; 
-45.             } 
-46.         } 
-47.     } 
-48.     
-49.     return dp[i][S] = minCost; 
-50. } 
-51.  
-52. int main() 
-53. { 
-54.     printf("Enter number of cities: "); 
-55.     scanf("%d", &n); 
-56.  
-57.     printf("Enter cost matrix:\n"); 
-58.     for (int i = 0; i < n; i++) 
-59.         for (int j = 0; j < n; j++) 
-60.             scanf("%d", &d[i][j]); 
-61.  
-62.     
-64.     for (int i = 0; i < n; i++) 
-65.         for (int mask = 0; mask < (1 << n); mask++) 
-66.         { 
-67.             dp[i][mask] = -1; 
-68.         } 
-69.  
-70.     int S = 0; 
-71.     for (int i = 1; i < n; i++) 
-72.         S |= (1 << i); 
-73.  
-74.     int result = g(0, S); 
-75.  
-76.     printf("Given Cost Matrix\n"); 
-77.     for (int i = 0; i < n; i++) 
-78.     { 
-79.          
-80.         printf("|"); 
-81.         for (int j = 0; j < n; j++) 
-82.             printf(" %d ", d[i][j]); 
-83.         printf("|\n"); 
-84.     } 
-85.     printf("Minimum travelling cost: %d\n", result); 
-86.  
-87.     return 0; 
-88. }
+   for (int k = 0; k < n; k++) 
+ {         
+        if (S & (1 << k)) 
+        {          
+int cost = d[i][k] + g(k, S & ~(1 << k)); 
+
+       
+        if (cost < minCost)
+        { 
+            minCost = cost; 
+        } 
+         } 
+  } 
+  
+  return dp[i][S] = minCost; 
+} 
+
+int main() 
+{ 
+ printf("Enter number of cities: "); 
+   scanf("%d", &n); 
+    printf("Enter cost matrix:\n"); 
+     for (int i = 0; i < n; i++) 
+         for (int j = 0; j < n; j++) 
+             scanf("%d", &d[i][j]); 
+          for (int i = 0; i < n; i++) 
+       for (int mask = 0; mask < (1 << n); mask++) 
+       { 
+           dp[i][mask] = -1; 
+       } 
+
+    int S = 0; 
+  for (int i = 1; i < n; i++)  
+            S |= (1 << i); 
+          
+   int result = g(0, S); 
+ 
+    printf("Given Cost Matrix\n"); 
+    for (int i = 0; i < n; i++) 
+   { 
+        
+        printf("|"); 
+        for (int j = 0; j < n; j++) 
+           printf(" %d ", d[i][j]); 
+       printf("|\n"); 
+   } 
+   printf("Minimum travelling cost: %d\n", result); 
+
+    return 0; 
+ }

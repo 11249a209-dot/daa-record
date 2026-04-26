@@ -14,73 +14,57 @@ Algorithm (Without Randomization)
  #include <stdio.h> 
  #include <stdlib.h> 
 #include <time.h> 
- 
-6. void swap(int *a, int *b) 
-7. { 
-8.     int temp = *a; 
-9.     *a = *b; 
-10.     *b = temp; 
-11. } 
-12.  
-13. // Standard Partitioning logic 
-14. int partition(int arr[], int low, int high) 
-15. { 
-16.     int pivot = arr[high]; 
-17.     int i = (low - 1); 
-18.  
-19.     for (int j = low; j < high; j++) 
-20.     { 
-21.         if (arr[j] < pivot) 
-22.         { 
-23.             i++; 
-24.             swap(&arr[i], &arr[j]); 
-25.         } 
-26.     } 
-27.     swap(&arr[i + 1], &arr[high]); 
-28.     return (i + 1); 
-29. } 
-30.  
-31. void quickSort(int arr[], int low, int high) 
-32. { 
-33.     if (low < high) 
-34.     { 
-35.         // Pick a random index and swap it with the last element (high element) 
-36.         int randomIndex = low + rand() % (high - low + 1); 
-37.         swap(&arr[randomIndex], &arr[high]); 
-38.  
-39.         // Now partition using that swapped random element as the pivot 
-40.         int pi = partition(arr, low, high); 
-41.  
-42.         // Recursively sort the halves 
-43.         quickSort(arr, low, pi - 1); 
-44.         quickSort(arr, pi + 1, high); 
-45.     } 
-46. } 
-47.  
-48. int main() 
-49. { 
-50.     int n; 
-51.     srand(time(NULL)); // Initialize random seed 
-52.  
-53.     printf("Enter number of elements: "); 
-54.     if (scanf("%d", &n) != 1 || n <= 0) 
-55.     { 
-56.         printf("Invalid input. Please enter a positive integer.\n"); 
-57.         return 1; 
-58.     } 
-59.  
-60.     int numbersToSort[n]; 
-61.     printf("Enter %d integers: ", n); 
-62.     for (int i = 0; i < n; i++) 
-63.         scanf("%d", &numbersToSort[i]); 
-64.  
-65.     // Call the randomized quicksort function 
-66.     quickSort(numbersToSort, 0, n - 1); 
-67.  
-68.     printf("\nSorted array: "); 
-69.     for (int i = 0; i < n; i++) 
-70.         printf("%d ", numbersToSort[i]); 
-71.  
-72.     
-73. } 
+ void swap(int *a, int *b) 
+{ 
+    int temp = *a; 
+*a = *b; 
+    *b = temp; 
+ }  
+ int partition(int arr[], int low, int high) 
+{ 
+    int pivot = arr[high]; 
+    int i = (low - 1); 
+
+   for (int j = low; j < high; j++) 
+    { 
+       if (arr[j] < pivot) 
+       { 
+        i++; 
+           swap(&arr[i], &arr[j]); 
+        } 
+   } 
+  swap(&arr[i + 1], &arr[high]); 
+   return (i + 1); 
+}  
+ void quickSort(int arr[], int low, int high) 
+ { 
+  if (low < high) 
+ { 
+int randomIndex = low + rand() % (high - low + 1); 
+swap(&arr[randomIndex], &arr[high]); 
+   int pi = partition(arr, low, high); 
+      quickSort(arr, low, pi - 1); 
+      quickSort(arr, pi + 1, high); 
+  } 
+ } 
+  
+ int main() 
+ { 
+   int n; 
+   srand(time(NULL)); 
+  printf("Enter number of elements: "); 
+   if (scanf("%d", &n) != 1 || n <= 0) 
+  { 
+      printf("Invalid input. Please enter a positive integer.\n"); 
+       return 1; 
+    } 
+    int numbersToSort[n]; 
+   printf("Enter %d integers: ", n); 
+  for (int i = 0; i < n; i++)    
+scanf("%d", &numbersToSort[i]); 
+ quickSort(numbersToSort, 0, n - 1); 
+   printf("\nSorted array: "); 
+    for (int i = 0; i < n; i++) 
+printf("%d ", numbersToSort[i]); 
+} 
 return 0;

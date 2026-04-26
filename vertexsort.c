@@ -7,8 +7,8 @@ Algorithm
 6. Mark both u and v as "visited." 
 7. The set C is a vertex cover that is at most twice the size of the optimal cover.
   program:
-1. #include <stdio.h> 
-2. #define V 5 
+#include <stdio.h> 
+  #define V 5 
   void findVertexCover(int graph[V][V]) 
 { 
   int visited[V]; 

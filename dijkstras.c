@@ -10,9 +10,9 @@ o For each neighbor v of u:
 ▪ If dist[u] + weight(u, v) < dist[v]:  
 ▪ Update dist[v] (Relaxation).
 program:
-1. #include <stdio.h> 
-2. #define V 5 
-3. #define INF 999999 
+ #include <stdio.h> 
+ #define V 5 
+ #define INF 999999 
   int extractMin(int dist[], int visited[]) 
 { 
   int min = INF, min_index = -1; 
